@@ -1,0 +1,21 @@
+{
+  "name": "start-algorithms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "typescript": "^3.4.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
+    "@typescript-eslint/parser": "^1.5.0",
+    "eslint-plugin-jest": "^22.4.1",
+    "jest": "^24.6.0",
+    "ts-jest": "^24.0.1"
+  }
+}

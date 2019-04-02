@@ -1,0 +1,27 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "extends": ["plugin:@typescript-eslint/recommended", "eslint:recommended"],
+  "plugins": ["@typescript-eslint", "jest"],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "indent": [0, 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": 2,
+    "no-console": 0,
+    "@typescript-eslint/indent": [0, 2],
+    "@typescript-eslint/no-unused-vars": 2,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-angle-bracket-type-assertion": 0
+  }
+}
