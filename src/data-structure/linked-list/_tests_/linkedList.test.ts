@@ -35,6 +35,7 @@ describe('linked list', () => {
     const list = initList(1, 2, 3);
     expect(list.contains(3)).toBe(true);
     expect(list.contains(4)).toBe(false);
+    expect(new LinkedList().contains(1)).toBe(false);
   });
 
   it('remove head of multiple nodes', () => {
@@ -75,7 +76,12 @@ describe('linked list', () => {
     expect(list.tail).toBe(null);
   });
 
+  it('traverse with no walker', () => {
+    expect(() => initList(1, 2, 3, 4).traverse()).not.toThrowError();
+  });
+
   it('reverse a list', () => {
+    expect(new LinkedList().reverse()).toEqual(new LinkedList());
     expect(initList(1, 2, 3, 4).reverse()).toEqual(initList(4, 3, 2, 1));
   });
 
