@@ -39,4 +39,22 @@ describe.only('queue', () => {
     queue.dequeue();
     expect(queue.isEmpty()).toBe(true);
   });
+
+  it('should enqueue and dequeue values in FIFO order', () => {
+    const queue = new Queue();
+    queue.enqueue(1);
+    queue.enqueue(2);
+    expect(queue.dequeue()).toBe(1);
+    expect(queue.dequeue()).toBe(2);
+  });
+
+  it('should be possible to convert a queue to array', () => {
+    const queue = new Queue();
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.dequeue();
+    queue.enqueue(4);
+    expect(queue.toArray()).toEqual([2, 3, 4]);
+  });
 });

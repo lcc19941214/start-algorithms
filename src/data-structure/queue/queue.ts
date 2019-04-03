@@ -8,12 +8,12 @@ export default class Queue {
     this.list = LinkedList.fromArray(initialValue);
   }
 
-  /** 进队 */
+  /** 向队列尾部插入一个元素 */
   public enqueue(value: nodeValue) {
     this.list.append(value);
   }
 
-  /** 出队 */
+  /** 从队列头部取出一个元素 */
   public dequeue(): nodeValue {
     const head = this.list.removeHead();
     return head ? head.value : null;
@@ -21,5 +21,9 @@ export default class Queue {
 
   public isEmpty(): boolean {
     return !this.list.head;
+  }
+
+  public toArray(): nodeValue[] {
+    return LinkedList.toArray(this.list);
   }
 }
