@@ -10,7 +10,7 @@ export default class Queue {
 
   /** 进队 */
   public enqueue(value: nodeValue) {
-    this.list.prepend(value);
+    this.list.append(value);
   }
 
   /** 出队 */

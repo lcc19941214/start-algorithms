@@ -23,7 +23,7 @@ describe.only('queue', () => {
     // @ts-ignore: for test
     const list = queue.list;
 
-    expect(LinkedList.toArray(list)).toEqual([3, 2, 1]);
+    expect(LinkedList.toArray(list)).toEqual([1, 2, 3]);
     expect(queue.isEmpty()).toBe(false);
   });
 
