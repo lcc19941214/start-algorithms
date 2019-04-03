@@ -33,13 +33,14 @@ export default class LinkedList {
   /** 链表中是否包含 */
   public contains(value: nodeValue): boolean {
     if (!this.head) return false;
-    let cursor = this.head;
-    while (cursor && cursor.value !== value) {
-      cursor = cursor.next;
+    let cur = this.head;
+    while (cur && cur.value !== value) {
+      cur = cur.next;
     }
-    return cursor !== null;
+    return cur !== null;
   }
 
+  /** 遍历整个链表 */
   public traverse(walker: (node: LinkedListNode) => void = () => {}) {
     let cur = this.head;
     while (cur) {
@@ -48,21 +49,44 @@ export default class LinkedList {
     }
   }
 
-  /** 移除某一项，如果有相同的 value，则全部都删除 */
-  public remove(value: nodeValue): LinkedListNode {
-    // if (!this.head) return null;
+  /**
+   * 移除某一项，如果有相同的 value，则全部都删除.
+   * 返回是否删除成功. 
+   */
+  public remove(value: nodeValue): boolean {
+    if (!this.head) return false;
 
-    // let deletedNode = null;
-    // let cur = this.head;
-    // while (cur) {
-    //   if (cur.value === value) {
-    //     deletedNode = cur;
-    //     cur = null; // stop if find the first one
-    //   }
-    // }
-    // return deletedNode;
+    let deletedNode: LinkedListNode = null;
+    let cur = this.head;
+    let prev: LinkedListNode = null;
+    let next: LinkedListNode = null;
+    while (cur) {
+      next = cur.next;
+      if (cur.value === value) {
+        deletedNode = cur;
+        if (!prev) {
+          this.head = next;
+        } else {
+          prev.next = next;
+        }
+      } else {
+        prev = cur;
+      }
+      cur = next;
+    }
+
+    if (this.head === null) {
+      this.tail = null;
+    }
+
+    if (this.tail && this.tail.value === value) {
+      this.tail = prev;
+    }
+
+    return deletedNode !== null;
   }
 
+  /** 删除头部节点，返回删除的节点 */
   public removeHead(): LinkedListNode {
     if (!this.head) return null;
 
@@ -78,6 +102,7 @@ export default class LinkedList {
     return deletedHead;
   }
 
+  /** 删除尾部节点，返回删除的节点 */
   public removeTail(): LinkedListNode {
     if (!this.tail) return null;
 
@@ -89,17 +114,18 @@ export default class LinkedList {
       return deletedTail;
     }
 
-    let cursor = this.head;
+    let cur = this.head;
     let pre = null;
-    while (cursor && cursor.next) {
-      pre = cursor;
-      cursor = cursor.next;
+    while (cur && cur.next) {
+      pre = cur;
+      cur = cur.next;
     }
     this.tail = pre;
     pre.next = null;
     return deletedTail;
   }
 
+  /** 反转单向链表 */
   public reverse(): LinkedList {
     if (!this.head) return this;
 

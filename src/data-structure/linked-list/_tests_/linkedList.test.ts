@@ -93,4 +93,21 @@ describe('linked list', () => {
     const list = initList(1, 2, 3, 4);
     expect(LinkedList.toArray(list)).toEqual([1, 2, 3, 4]);
   });
+
+  it('remove elements', () => {
+    expect(initList().remove(1)).toBe(false);
+
+    const list = initList(1, 2, 3, 4, 1, 2, 3, 1);
+    const result = list.remove(1);
+
+    expect(result).toBe(true);
+    expect(list).toEqual(initList(2, 3, 4, 2, 3));
+  });
+
+  it('clear list with all the same elements', () => {
+    const list = initList(1, 1, 1, 1, 1, 1);
+    const result = list.remove(1);
+    expect(result).toBe(true);
+    expect(list).toEqual(initList());
+  });
 });
