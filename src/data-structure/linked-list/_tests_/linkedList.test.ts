@@ -1,8 +1,8 @@
 import LinkedList from '../linkedList';
-import LinkedListNode, { nodeValue } from '../linkedListNode';
+import LinkedListNode from '../linkedListNode';
 
-const initList = (...values: nodeValue[]) => {
-  const list = new LinkedList();
+const initList = <T>(...values: T[]) => {
+  const list = new LinkedList<T>();
   values.forEach(value => {
     list.append(value);
   });
@@ -109,5 +109,12 @@ describe('linked list', () => {
     const result = list.remove(1);
     expect(result).toBe(true);
     expect(list).toEqual(initList());
+  });
+
+  it('should find one element', () => {
+    const list = initList(1, 2, 3, 4);
+    expect(initList().find(node => node.value === 1)).toBeNull();
+    expect(list.find(node => node.value === 4)).toEqual(list.tail);
+    expect(list.find(node => node.value === 5)).toBeNull();
   });
 });

@@ -16,7 +16,7 @@ describe.only('queue', () => {
   });
 
   it('enqueue values', () => {
-    const queue = new Queue();
+    const queue = new Queue<number>();
     queue.enqueue(1);
     queue.enqueue(2);
     queue.enqueue(3);
@@ -41,7 +41,7 @@ describe.only('queue', () => {
   });
 
   it('should enqueue and dequeue values in FIFO order', () => {
-    const queue = new Queue();
+    const queue = new Queue<number>();
     queue.enqueue(1);
     queue.enqueue(2);
     expect(queue.dequeue()).toBe(1);
@@ -49,7 +49,7 @@ describe.only('queue', () => {
   });
 
   it('should be possible to convert a queue to array', () => {
-    const queue = new Queue();
+    const queue = new Queue<number>();
     queue.enqueue(1);
     queue.enqueue(2);
     queue.enqueue(3);

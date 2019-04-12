@@ -1,14 +1,12 @@
-export type nodeValue = string | number;
-
-export default class DoublyLinkedListNode {
-  public value: nodeValue;
-  public previous: DoublyLinkedListNode;
-  public next: DoublyLinkedListNode;
+export default class DoublyLinkedListNode<T> {
+  public value: T;
+  public previous: DoublyLinkedListNode<T>;
+  public next: DoublyLinkedListNode<T>;
 
   public constructor(
-    value: nodeValue,
-    next: DoublyLinkedListNode = null,
-    previous: DoublyLinkedListNode = null
+    value: T,
+    next: DoublyLinkedListNode<T> = null,
+    previous: DoublyLinkedListNode<T> = null
   ) {
     this.value = value;
     this.next = next;

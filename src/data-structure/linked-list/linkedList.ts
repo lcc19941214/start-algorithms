@@ -1,8 +1,8 @@
-import LinkedListNode, { nodeValue } from './linkedListNode';
+import LinkedListNode from './linkedListNode';
 
-export default class LinkedList {
-  public head!: LinkedListNode;
-  public tail!: LinkedListNode;
+export default class LinkedList<T> {
+  public head!: LinkedListNode<T>;
+  public tail!: LinkedListNode<T>;
 
   public constructor() {
     this.head = null;
@@ -10,7 +10,7 @@ export default class LinkedList {
   }
 
   /** 在头部插入 */
-  public prepend(value: nodeValue) {
+  public prepend(value: T) {
     const node = new LinkedListNode(value, this.head);
     this.head = node;
     if (this.tail === null) {
@@ -19,7 +19,7 @@ export default class LinkedList {
   }
 
   /** 在尾部插入 */
-  public append(value: nodeValue) {
+  public append(value: T) {
     const node = new LinkedListNode(value);
     if (!this.head && !this.tail) {
       this.head = node;
@@ -31,7 +31,7 @@ export default class LinkedList {
   }
 
   /** 链表中是否包含 */
-  public contains(value: nodeValue): boolean {
+  public contains(value: T): boolean {
     if (!this.head) return false;
     let cur = this.head;
     while (cur && cur.value !== value) {
@@ -40,8 +40,21 @@ export default class LinkedList {
     return cur !== null;
   }
 
+  /** 查询链表中是否有满足某个条件的节点 */
+  public find(query: (node: LinkedListNode<T>) => boolean): LinkedListNode<T> {
+    if (!this.head) return null;
+    let cur = this.head;
+    while (cur) {
+      if (query(cur)) {
+        return cur;
+      }
+      cur = cur.next;
+    }
+    return null;
+  }
+
   /** 遍历整个链表 */
-  public traverse(walker: (node: LinkedListNode) => void = () => {}) {
+  public traverse(walker: (node: LinkedListNode<T>) => void = () => {}) {
     let cur = this.head;
     while (cur) {
       walker(cur);
@@ -53,13 +66,13 @@ export default class LinkedList {
    * 移除某一项，如果有相同的 value，则全部都删除.
    * 返回是否删除成功. 
    */
-  public remove(value: nodeValue): boolean {
+  public remove(value: T): boolean {
     if (!this.head) return false;
 
-    let deletedNode: LinkedListNode = null;
+    let deletedNode: LinkedListNode<T> = null;
     let cur = this.head;
-    let prev: LinkedListNode = null;
-    let next: LinkedListNode = null;
+    let prev: LinkedListNode<T> = null;
+    let next: LinkedListNode<T> = null;
     while (cur) {
       next = cur.next;
       if (cur.value === value) {
@@ -87,7 +100,7 @@ export default class LinkedList {
   }
 
   /** 删除头部节点，返回删除的节点 */
-  public removeHead(): LinkedListNode {
+  public removeHead(): LinkedListNode<T> {
     if (!this.head) return null;
 
     let deletedHead = this.head;
@@ -103,7 +116,7 @@ export default class LinkedList {
   }
 
   /** 删除尾部节点，返回删除的节点 */
-  public removeTail(): LinkedListNode {
+  public removeTail(): LinkedListNode<T> {
     if (!this.tail) return null;
 
     const deletedTail = this.tail;
@@ -126,7 +139,7 @@ export default class LinkedList {
   }
 
   /** 反转单向链表 */
-  public reverse(): LinkedList {
+  public reverse(): LinkedList<T> {
     if (!this.head) return this;
 
     let cur = this.head;
@@ -146,16 +159,16 @@ export default class LinkedList {
     return this;
   }
 
-  public static fromArray = (arr: nodeValue[]): LinkedList => {
-    const list = new LinkedList();
+  public static fromArray = <K>(arr: K[]): LinkedList<K> => {
+    const list = new LinkedList<K>();
     arr.forEach(value => {
       list.append(value);
     });
     return list;
   };
 
-  public static toArray = (list: LinkedList): nodeValue[] => {
-    const array: nodeValue[] = [];
+  public static toArray = <K>(list: LinkedList<K>): K[] => {
+    const array: K[] = [];
     list.traverse(node => {
       array.push(node.value);
     });

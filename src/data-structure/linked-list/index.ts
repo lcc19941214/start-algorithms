@@ -1,2 +1,2 @@
 export { default } from './linkedList';
-export { default as LinkedListNode, nodeValue } from './linkedListNode';
+export { default as LinkedListNode } from './linkedListNode';

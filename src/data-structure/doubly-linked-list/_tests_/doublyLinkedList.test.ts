@@ -1,8 +1,8 @@
 import DoublyLinkedList from '../doublyLinkedList';
-import DoublyLinkedListNode, { nodeValue } from '../doublyLinkedListNode';
+import DoublyLinkedListNode from '../doublyLinkedListNode';
 
-const initList = (...values: nodeValue[]) => {
-  const list = new DoublyLinkedList();
+const initList = <T>(...values: T[]) => {
+  const list = new DoublyLinkedList<T>();
   values.forEach(value => {
     list.append(value);
   });
@@ -22,7 +22,7 @@ describe.only('doubly linked list', () => {
   });
 
   it('prepend a value', () => {
-    const list = new DoublyLinkedList();
+    const list = new DoublyLinkedList<number>();
     list.prepend(3);
     list.prepend(2);
     list.prepend(1);

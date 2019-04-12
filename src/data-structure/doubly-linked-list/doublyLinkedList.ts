@@ -1,8 +1,8 @@
-import DoublyLinkedListNode, { nodeValue } from './doublyLinkedListNode';
+import DoublyLinkedListNode from './doublyLinkedListNode';
 
-export default class DoublyLinkedList {
-  public head!: DoublyLinkedListNode;
-  public tail!: DoublyLinkedListNode;
+export default class DoublyLinkedList<T> {
+  public head!: DoublyLinkedListNode<T>;
+  public tail!: DoublyLinkedListNode<T>;
 
   public constructor() {
     this.head = null;
@@ -10,7 +10,7 @@ export default class DoublyLinkedList {
   }
 
   /** 在头部插入 */
-  public prepend(value: nodeValue) {
+  public prepend(value: T) {
     const node = new DoublyLinkedListNode(value, this.head, null);
     if (this.head) {
       this.head.previous = node;
@@ -22,7 +22,7 @@ export default class DoublyLinkedList {
   }
 
   /** 在尾部插入 */
-  public append(value: nodeValue) {
+  public append(value: T) {
     const node = new DoublyLinkedListNode(value, null, this.tail);
     if (this.head === null) {
       this.head = node;
@@ -34,7 +34,7 @@ export default class DoublyLinkedList {
   }
 
   /** 链表中是否包含 */
-  public contains(value: nodeValue): boolean {
+  public contains(value: T): boolean {
     if (!this.head) return false;
     let cur = this.head;
     while (cur && cur.value !== value) {
@@ -44,7 +44,7 @@ export default class DoublyLinkedList {
   }
 
   /** 正向遍历整个链表 */
-  public traverse(walker: (node: DoublyLinkedListNode) => void = () => {}) {
+  public traverse(walker: (node: DoublyLinkedListNode<T>) => void = () => {}) {
     let cur = this.head;
     while (cur) {
       walker(cur);
@@ -53,7 +53,7 @@ export default class DoublyLinkedList {
   }
 
   /** 反向遍历整个链表 */
-  public traverseRight(walker: (node: DoublyLinkedListNode) => void = () => {}) {
+  public traverseRight(walker: (node: DoublyLinkedListNode<T>) => void = () => {}) {
     let cur = this.tail;
     while (cur) {
       walker(cur);
@@ -65,10 +65,10 @@ export default class DoublyLinkedList {
    * 移除某一项，如果有相同的 value，则全部都删除.
    * 返回是否删除成功.
    */
-  public remove(value: nodeValue): boolean {
+  public remove(value: T): boolean {
     if (!this.head) return false;
 
-    let deletedNode: DoublyLinkedListNode = null;
+    let deletedNode: DoublyLinkedListNode<T> = null;
     let cur = this.head;
     while (cur) {
       const prev = cur.previous;
@@ -97,7 +97,7 @@ export default class DoublyLinkedList {
   }
 
   /** 删除头部节点，返回删除的节点 */
-  public removeHead(): DoublyLinkedListNode {
+  public removeHead(): DoublyLinkedListNode<T> {
     if (!this.head) return null;
 
     let deletedHead = this.head;
@@ -114,7 +114,7 @@ export default class DoublyLinkedList {
   }
 
   /** 删除尾部节点，返回删除的节点 */
-  public removeTail(): DoublyLinkedListNode {
+  public removeTail(): DoublyLinkedListNode<T> {
     if (!this.head) return null;
 
     let deletedTail = this.tail;
@@ -131,7 +131,7 @@ export default class DoublyLinkedList {
   }
 
   /** 反转单向链表 */
-  public reverse(): DoublyLinkedList {
+  public reverse(): DoublyLinkedList<T> {
     if (!this.head) return this;
 
     let cur = this.head;
@@ -151,16 +151,16 @@ export default class DoublyLinkedList {
     return this;
   }
 
-  public static fromArray = (arr: nodeValue[]): DoublyLinkedList => {
-    const list = new DoublyLinkedList();
+  public static fromArray = <K>(arr: K[]): DoublyLinkedList<K> => {
+    const list = new DoublyLinkedList<K>();
     arr.forEach(value => {
       list.append(value);
     });
     return list;
   };
 
-  public static toArray = (list: DoublyLinkedList): nodeValue[] => {
-    const array: nodeValue[] = [];
+  public static toArray = <K>(list: DoublyLinkedList<K>): K[] => {
+    const array: K[] = [];
     list.traverse(node => {
       array.push(node.value);
     });

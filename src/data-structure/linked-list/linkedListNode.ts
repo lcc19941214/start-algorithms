@@ -1,10 +1,10 @@
 export type nodeValue = string | number;
 
-export default class LinkedListNode {
-  public value: nodeValue;
-  public next: LinkedListNode;
+export default class LinkedListNode<T> {
+  public value: T;
+  public next: LinkedListNode<T>;
 
-  public constructor(value: nodeValue, next: LinkedListNode = null) {
+  public constructor(value: T, next: LinkedListNode<T> = null) {
     this.value = value;
     this.next = next;
   }
