@@ -1,6 +1,6 @@
 import DoublyLinkedListNode from './doublyLinkedListNode';
 
-export default class DoublyLinkedList<T> {
+export default class DoublyLinkedList<T = any> {
   public head!: DoublyLinkedListNode<T>;
   public tail!: DoublyLinkedListNode<T>;
 

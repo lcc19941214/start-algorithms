@@ -1,6 +1,6 @@
 import LinkedListNode from './linkedListNode';
 
-export default class LinkedList<T> {
+export default class LinkedList<T = any> {
   public head!: LinkedListNode<T>;
   public tail!: LinkedListNode<T>;
 
