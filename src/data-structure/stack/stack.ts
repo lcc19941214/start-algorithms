@@ -1,9 +1,9 @@
-import LinkedList, { nodeValue } from '../linked-list';
+import LinkedList from '../linked-list';
 
-export default class Stack {
-  private list: LinkedList;
+export default class Stack<T> {
+  private list: LinkedList<T>;
 
-  public constructor(...initialValues: nodeValue[]) {
+  public constructor(...initialValues: T[]) {
     this.list = LinkedList.fromArray(initialValues);
   }
 
@@ -27,11 +27,11 @@ export default class Stack {
   }
 
   /** 向栈尾推入一个元素 */
-  public push(value: nodeValue) {
+  public push(value: T) {
     this.list.append(value);
   }
 
-  public toArray(): nodeValue[] {
+  public toArray(): T[] {
     return LinkedList.toArray(this.list);
   }
 }
