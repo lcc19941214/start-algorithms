@@ -1,11 +1,13 @@
 import Heap from './heap';
 
-type comparator = <T>(firstItem: T, secondItem: T) => boolean;
+export interface Comparator<T> {
+  (firstItem: T, secondItem: T): boolean;
+}
 
-export default class MaxHeap<T> extends Heap<T> {
-  private comparator?: comparator;
+export default class MaxHeap<T = any> extends Heap<T> {
+  private comparator?: Comparator<T>;
 
-  public constructor(comparator: comparator) {
+  public constructor(comparator?: Comparator<T>) {
     super();
     this.comparator =
       comparator ||

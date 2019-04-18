@@ -36,6 +36,8 @@ describe.only('stack', () => {
 
     stack.pop();
     expect(stack.isEmpty()).toBe(true);
+
+    expect(new Stack().pop()).toBeNull();
   });
 
   it('should push and pop values in LIFO order', () => {

@@ -38,6 +38,8 @@ describe.only('queue', () => {
 
     queue.dequeue();
     expect(queue.isEmpty()).toBe(true);
+
+    expect(new Queue().dequeue()).toBeNull();
   });
 
   it('should enqueue and dequeue values in FIFO order', () => {
