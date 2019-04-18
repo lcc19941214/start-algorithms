@@ -2,7 +2,7 @@
  * Parent class for Min and Max Heaps.
  * 借助数组，使用完全二叉树的方式定义一个堆.
  */
-export default class Heap<T> {
+export default class Heap<T = any> {
   public heapContainer?: T[];
 
   protected constructor() {
@@ -30,7 +30,7 @@ export default class Heap<T> {
   }
 
   public hasParent(childIndex: number): boolean {
-    const parentIndex = this.getLeftChildIndex(childIndex);
+    const parentIndex = this.getParentIndex(childIndex);
     return parentIndex >= 0;
   }
 
@@ -144,7 +144,7 @@ export default class Heap<T> {
   }
 
   public isEmpty(): boolean {
-    return !!this.heapContainer.length;
+    return !this.heapContainer.length;
   }
 
   /** 自下向上交换子节点和父节点位置 */
@@ -196,5 +196,9 @@ export default class Heap<T> {
       You have to implement heap pair comparision method
       for ${firstElement} and ${secondElement} values.
     `);
+  }
+
+  public toString() {
+    return this.heapContainer.toString();
   }
 }
