@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest --coverage",
+    "readme": "./scripts/generate-readme.sh",
     "build": "tsc"
   },
   "dependencies": {

@@ -1,27 +1,9 @@
 # Start Algorithms
 
-## Data Structure
-
-### linked list
-
-单向链表，一系列节点按照顺序相互连接而组成的链式数据结构。
-每个节点保存着节点的值，以及指向下一个节点的指针。
-
-### doubly linked list
-
-双向链表，与单向链表类似。可以看做是同时存在两条顺序相反的单向链表的数据结构。
-每个节点保存着相邻指向两个节点的指针。
-
-### queue
-
-队列，一种按照顺序保存数据的抽象数据结构或类型。遵循先进先出的原则，即FIFO (First In First Out)
-
-### stack
-
-栈，一种按照顺序保存数据的抽象数据结构或类型。遵循后进先出的原则，即LIFO (Last In First Out)
-
-### hash table
-
-哈希表，一个哈希表是一种实现关联数组的数据类型或结构，维护了键到值的映射关系。
-哈希表通过使用 哈希函数/散列函数 来计算一个值在数组/桶/槽中的索引，通过该索引可以找到对应的值。
-
+## data-structure
+- [doubly-linked-list](./src/data-structure/doubly-linked-list/README.md)
+- [hash-table](./src/data-structure/hash-table/README.md)
+- [heap](./src/data-structure/heap/README.md)
+- [linked-list](./src/data-structure/linked-list/README.md)
+- [queue](./src/data-structure/queue/README.md)
+- [stack](./src/data-structure/stack/README.md)
