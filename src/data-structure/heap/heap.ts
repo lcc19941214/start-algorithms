@@ -100,8 +100,18 @@ export default class Heap<T = any> {
   }
 
   /** 移除一个子节点 */
-  public remove(node: T): Heap<T> {
-    const nodeToRemoveNumber = this.findIndex(v => v === node);
+  public remove(node: T): Heap<T>;
+  // eslint-disable-next-line no-dupe-class-members
+  public remove(query: (node: T) => boolean): Heap<T>;
+  // eslint-disable-next-line no-dupe-class-members
+  public remove(node: T | ((node: T) => boolean)): Heap<T> {
+    const nodeToRemoveNumber = this.findIndex(v => {
+      if (typeof node === 'function') {
+        return (node as Function)(v);
+      } else {
+        return v === node;
+      }
+    });
     nodeToRemoveNumber.forEach(indexToRemove => {
       if (indexToRemove === this.heapContainer.length - 1) {
         this.heapContainer.pop();

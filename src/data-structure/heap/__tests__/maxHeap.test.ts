@@ -24,7 +24,7 @@ describe('max-heap', () => {
       .add(70)
       .add(50)
       .add(80)
-      .remove(70);
+      .remove(v => v === 70);
     expect(maxHeapA.toString()).toBe('100,90,80,60,50,40');
 
     maxHeapA.remove(40);
@@ -85,7 +85,7 @@ describe('max-heap', () => {
     const maxHeapB = new MaxHeap<number>().add(100);
     expect(maxHeapB.poll()).toBe(100);
     expect(maxHeapB.isEmpty()).toBe(true);
-    
+
     const emptyMaxHeap = new MaxHeap<number>();
     expect(emptyMaxHeap.poll()).toBeNull();
   });
