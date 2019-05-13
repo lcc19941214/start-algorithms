@@ -60,7 +60,7 @@ export default class Heap<T = any> {
   }
 
   /** 交换指定索引的两个值 */
-  public swap(indexOne: number, indexTwo: number) {
+  protected swap(indexOne: number, indexTwo: number) {
     const temp = this.heapContainer[indexTwo];
     this.heapContainer[indexTwo] = this.heapContainer[indexOne];
     this.heapContainer[indexOne] = temp;
@@ -158,7 +158,7 @@ export default class Heap<T = any> {
   }
 
   /** 自下向上交换子节点和父节点位置 */
-  public heapifyUp(customStartIndex?: number) {
+  protected heapifyUp(customStartIndex?: number) {
     let currentIndex = customStartIndex || this.heapContainer.length - 1;
 
     while (
@@ -171,7 +171,7 @@ export default class Heap<T = any> {
   }
 
   /** 自上向下交换父节点和子节点位置 */
-  public heapifyDown(customStartIndex = 0) {
+  protected heapifyDown(customStartIndex = 0) {
     let currentIndex = customStartIndex;
     let nextIndex = null;
 
