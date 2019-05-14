@@ -122,4 +122,9 @@ describe('max-heap', () => {
 
     expect(maxHeap.heapContainer.map(v => v.value).toString()).toBe('100,90,80,60,70,40,50');
   });
+
+  it('should not throw error while remove a non-existed element', () => {
+    const maxHeap = new MaxHeap<number>();
+    expect(() => maxHeap.remove(100)).not.toThrow();
+  });
 });
