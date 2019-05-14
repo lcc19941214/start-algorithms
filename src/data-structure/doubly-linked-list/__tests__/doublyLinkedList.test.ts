@@ -9,7 +9,7 @@ const initList = <T>(...values: T[]) => {
   return list;
 };
 
-describe.only('doubly linked list', () => {
+describe('doubly linked list', () => {
   it('initialize a doubly linked node', () => {
     const node = new DoublyLinkedListNode(1);
     expect(node).toEqual({ value: 1, previous: null, next: null });

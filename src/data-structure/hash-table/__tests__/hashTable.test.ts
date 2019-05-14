@@ -1,6 +1,6 @@
 import HashTable from '../hashTable';
 
-describe.only('hash table', () => {
+describe('hash table', () => {
   it('create a hashTable with specific size', () => {
     expect(new HashTable(24).buckets.length).toBe(24);
     expect(new HashTable(64).buckets.length).toBe(64);

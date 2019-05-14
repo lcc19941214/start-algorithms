@@ -1,7 +1,7 @@
 import Stack from '../stack';
 import LinkedList from '../../linked-list';
 
-describe.only('stack', () => {
+describe('stack', () => {
   it('should create a empty stack', () => {
     const stack = new Stack();
     expect(stack.isEmpty()).toBe(true);

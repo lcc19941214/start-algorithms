@@ -1,7 +1,7 @@
 import Queue from '../queue';
 import LinkedList from '../../linked-list';
 
-describe.only('queue', () => {
+describe('queue', () => {
   it('initialize a queue', () => {
     const queue = new Queue(1, 2, 3, 4);
     // @ts-ignore: for test
